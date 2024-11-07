@@ -1,0 +1,25 @@
+name: Multiple Environment Variables Example
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  print-environment-variables:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set Multiple Environment Variables
+        run: |
+          echo "GREETING=Hello" >> $GITHUB_ENV
+          echo "TARGET=GitHub Actions" >> $GITHUB_ENV
+          echo "LANGUAGE=Español" >> $GITHUB_ENV
+
+      - name: Print Environment Variables
+        run: |
+          echo "$GREETING, $TARGET!"
+          echo "Language: $LANGUAGE"
