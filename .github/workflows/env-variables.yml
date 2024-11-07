@@ -1,0 +1,20 @@
+name: Environment Variables Example
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  print-environment-variable:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set Environment Variable
+        run: echo "HELLO=Hello, GitHub Actions!" >> $GITHUB_ENV
+
+      - name: Print Environment Variable
+        run: echo "$HELLO"
